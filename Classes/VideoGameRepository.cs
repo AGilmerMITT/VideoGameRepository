@@ -267,5 +267,14 @@ namespace VideoGameRepository.Classes
             pc.AddGame(satisfactory);
             pc.AddGame(celeste);
         }
+
+        public void PrintGamesByStudio(string studio)
+        {
+            IEnumerable<VideoGame> videogameList = VideoGames.Where(m => m.Studio.Name == studio).ToList();
+            foreach (VideoGame videoGame in videogameList)
+            {
+                Console.WriteLine(videoGame.Title);
+            }
+        }
     }
 }
