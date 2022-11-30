@@ -18,7 +18,11 @@ namespace VideoGameRepository.Classes
             Studio WildcardStudio = new("Wildcard Studio", 4_000_000);
             Studios.Add(WildcardStudio);
 
+            Studio AbdulMonsterPublish = new("Abdul Monster Publish", 9_000_000_000_000);
+            Studios.Add(AbdulMonsterPublish);
+
             Publisher WildcardPublishing = new("Wildcard Publishing", 4_000_000);
+           
             Publishers.Add(WildcardPublishing);
 
             Studio coffeeStainStudio = new("Coffee Stain Studios", 1_000_000);
@@ -91,7 +95,7 @@ namespace VideoGameRepository.Classes
 
             VideoGame ARKSurvivalEvolved = new(
                 title: "ARK: Survival Evolved",
-                category: "Survival",
+                category: "Death",
                 year: 2017,
                 playerCount: 100,
                 price: 20f,
