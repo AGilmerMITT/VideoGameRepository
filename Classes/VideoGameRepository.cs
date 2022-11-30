@@ -28,6 +28,12 @@ namespace VideoGameRepository.Classes
             Studio monolithSoft = new("Monolith Soft", 1_000_000);
             Studio halLabs = new("HAL Laboratories", 1_000_000);
 
+            Studio landfallWest = new("Landfall West", 20_000_000_000);
+            Studios.Add(landfallWest);
+
+            Studio epicGames = new("Epic Games", 18_000_000_000_000);
+            Studios.Add(epicGames);
+
             Studios.Add(coffeeStainStudio);
             Studios.Add(monolithSoft);
             Studios.Add(halLabs);
@@ -37,6 +43,12 @@ namespace VideoGameRepository.Classes
             Publisher maddyMakesGamesPublishing = new("Maddy Makes Games", 36_000_000);
             Publishers.Add(coffeeStainPublishing);
             Publishers.Add(maddyMakesGamesPublishing);
+
+            Publisher landfall = new("Landfall", 20_000_000_000);
+            Publishers.Add(landfall);
+
+            Publisher epic = new("Epic Games", 18_000_000_000_000);
+            Publishers.Add(epic);
 
             Publisher nintendo = new("Nintendo", 100_000_000);
             Publishers.Add(nintendo);
@@ -50,6 +62,8 @@ namespace VideoGameRepository.Classes
             VideoGameConsole pc = new("PC", 1500, 20, true);
             VideoGameConsole wiiU = new("Wii U", 400, 8, true);
             VideoGameConsole nSwitch = new("Switch", 400, 8, true);
+            VideoGameConsole xBox = new("Xbox", 400, 4, true);
+            VideoGameConsole ps = new("Playstation", 400, 4, true);
 
             Consoles.Add(pc);
             Consoles.Add(wiiU);
@@ -243,6 +257,32 @@ namespace VideoGameRepository.Classes
                 publisher: nintendo,
                 ageRating: 7
             );
+
+            VideoGame stickFight = new (
+                title: "Stick Fight: The Game",
+                category: "Fighting Game",
+                year: 2017,
+                playerCount: 4,
+                price: 5f,
+                studio: landfallWest,
+                consoles: pc,
+                publisher: landfall,
+                ageRating: 25
+            );
+
+            VideoGame fortnite = new (
+                title: "Fortnite",
+                category: "Battle Royale",
+                year: 2017,
+                playerCount: 100,
+                price: 0,
+                studio: epicGames,
+                consoles: {pc, nSwitch, Xbox, ps},
+                publisher: epic,
+                ageRating: 13
+            );
+
+
 
             VideoGames.Add(xenoblade);
             VideoGames.Add(xenoblade2);
