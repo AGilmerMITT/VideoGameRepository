@@ -314,5 +314,14 @@ namespace VideoGameRepository.Classes
             FromSoftware.AddGame(EldenRing);
             pc.AddGame(EldenRing);
         }
+
+        public void PrintGamesByStudio(string studio)
+        {
+            IEnumerable<VideoGame> videogameList = VideoGames.Where(m => m.Studio.Name == studio).ToList();
+            foreach (VideoGame videoGame in videogameList)
+            {
+                Console.WriteLine(videoGame.Title);
+            }
+        }
     }
 }
