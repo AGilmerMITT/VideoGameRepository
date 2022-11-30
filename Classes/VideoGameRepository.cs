@@ -15,6 +15,12 @@ namespace VideoGameRepository.Classes
 
         public VideoGameRepository()
         {
+            Studio five05Games = new Studio("505 Games", 10_000_000);
+            Studios.Add(five05Games);
+
+            Publisher reLogic = new Publisher("Re-Logic", 40_000_000);
+            Publishers.Add(reLogic);
+
             Studio WildcardStudio = new("Wildcard Studio", 4_000_000);
             Studios.Add(WildcardStudio);
 
@@ -54,6 +60,19 @@ namespace VideoGameRepository.Classes
             Consoles.Add(pc);
             Consoles.Add(wiiU);
             Consoles.Add(nSwitch);
+
+            VideoGame terraria = new(
+                title: "Terraria",
+                category: "Sandbox",
+                year: 2011,
+                playerCount: 50,
+                price: 20f,
+                studio: five05Games,
+                consoles: new() { pc, nSwitch},
+                publisher: reLogic,
+                ageRating: 12
+
+                );
 
             VideoGame satisfactory = new(
                 title: "Satisfactory",
