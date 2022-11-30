@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,45 +16,64 @@ namespace VideoGameRepository.Classes
 
         public VideoGameRepository()
         {
+            // Studios Creation
             Studio WildcardStudio = new("Wildcard Studio", 4_000_000);
             Studios.Add(WildcardStudio);
-
-            Publisher WildcardPublishing = new("Wildcard Publishing", 4_000_000);
-            Publishers.Add(WildcardPublishing);
-
             Studio coffeeStainStudio = new("Coffee Stain Studios", 1_000_000);
+            Studios.Add(coffeeStainStudio);
             Studio maddyMakesGamesStudio = new("Maddy Makes Games", 3_000_000);
-
             Studios.Add(maddyMakesGamesStudio);
             Studio monolithSoft = new("Monolith Soft", 1_000_000);
-            Studio halLabs = new("HAL Laboratories", 1_000_000);
-
-            Studios.Add(coffeeStainStudio);
             Studios.Add(monolithSoft);
+            Studio halLabs = new("HAL Laboratories", 1_000_000);
             Studios.Add(halLabs);
-            
-            Publisher coffeeStainPublishing = new("Coffee Stain Publishing", 1_000_000);
-
-            Publisher maddyMakesGamesPublishing = new("Maddy Makes Games", 36_000_000);
-            Publishers.Add(coffeeStainPublishing);
-            Publishers.Add(maddyMakesGamesPublishing);
-
-            Publisher nintendo = new("Nintendo", 100_000_000);
-            Publishers.Add(nintendo);
-
             Studio KeenSoftwareHouseStudio = new("Keen Software House Studios", 500_000);
             Studios.Add(KeenSoftwareHouseStudio);
+            Studio hopooGames = new("Hopoo Games", 5_000_000);
+            Studios.Add(hopooGames);
+            Studio ninjaKiwi = new("Ninja Kiwi", 3_000_000);
+            Studios.Add(ninjaKiwi);
 
+            // Publishers Creation
+            Publisher WildcardPublishing = new("Wildcard Publishing", 4_000_000);
+            Publishers.Add(WildcardPublishing);
+            Publisher coffeeStainPublishing = new("Coffee Stain Publishing", 1_000_000);
+            Publishers.Add(coffeeStainPublishing);
+            Publisher maddyMakesGamesPublishing = new("Maddy Makes Games", 36_000_000);
+            Publishers.Add(maddyMakesGamesPublishing);
+            Publisher nintendo = new("Nintendo", 100_000_000);
+            Publishers.Add(nintendo);
             Publisher KeenSoftwareHousePublishing = new("Keen Software House Publishing", 500_000);
             Publishers.Add(KeenSoftwareHousePublishing);
+            Publisher gearbox = new("Gearbox", 5);
+            Publishers.Add(gearbox);
+            Publisher ninjaKiwiPublishing = new("Ninja Kiwi Publishing", 1_000_000);
+            Publishers.Add(ninjaKiwiPublishing);
 
+            // Adding Studio to Publisher
+            coffeeStainPublishing.AddStudio(coffeeStainStudio);
+            WildcardPublishing.AddStudio(WildcardStudio);
+            gearbox.AddStudio(hopooGames);
+            ninjaKiwiPublishing.AddStudio(ninjaKiwi);
+            maddyMakesGamesPublishing.AddStudio(maddyMakesGamesStudio);
+
+
+            // Consoles Creation
             VideoGameConsole pc = new("PC", 1500, 20, true);
-            VideoGameConsole wiiU = new("Wii U", 400, 8, true);
-            VideoGameConsole nSwitch = new("Switch", 400, 8, true);
-
             Consoles.Add(pc);
+            VideoGameConsole wiiU = new("Wii U", 400, 8, true);
             Consoles.Add(wiiU);
+            VideoGameConsole nSwitch = new("Switch", 400, 8, true);
             Consoles.Add(nSwitch);
+
+            /*
+             * Video Games Creation
+             *  order:
+             *      Create new video game
+             *      Add game to studio
+             *      Add game to console
+             *      Add game to VideoGames
+             */
 
             VideoGame satisfactory = new(
                 title: "Satisfactory",
@@ -65,8 +85,10 @@ namespace VideoGameRepository.Classes
                 consoles: new() { pc },
                 publisher: coffeeStainPublishing,
                 ageRating: 10
-
                 );
+            coffeeStainStudio.AddGame(satisfactory);
+            // gmae console here
+            VideoGames.Add(satisfactory);
 
             VideoGame celeste = new(
                 title: "Celeste",
@@ -79,12 +101,9 @@ namespace VideoGameRepository.Classes
                 publisher: maddyMakesGamesPublishing,
                 ageRating: 10
                 );
-
-            VideoGames.Add(satisfactory);
+            maddyMakesGamesStudio.AddGame(celeste);
+            // gmae console here
             VideoGames.Add(celeste);
-
-            coffeeStainStudio.AddGame(satisfactory);
-            coffeeStainPublishing.AddStudio(coffeeStainStudio);
 
             VideoGame ARKSurvivalEvolved = new(
                 title: "ARK: Survival Evolved",
@@ -97,10 +116,9 @@ namespace VideoGameRepository.Classes
                 publisher: WildcardPublishing,
                 ageRating: 13
                 );
-            VideoGames.Add(ARKSurvivalEvolved);
-
-            WildcardPublishing.AddStudio(WildcardStudio);
+            WildcardStudio.AddGame(ARKSurvivalEvolved);
             pc.AddGame(ARKSurvivalEvolved);
+            VideoGames.Add(ARKSurvivalEvolved);
 
             VideoGame SpaceEngineers = new(
                 title: "Space Engineers",
@@ -113,16 +131,9 @@ namespace VideoGameRepository.Classes
                 publisher: WildcardPublishing,
                 ageRating: 13
                 );
-            VideoGames.Add(SpaceEngineers);
-
             coffeeStainStudio.AddGame(SpaceEngineers);
             pc.AddGame(SpaceEngineers);
-
-            Studio hopooGames = new("Hopoo Games", 5_000_000);
-            Studios.Add(hopooGames);
-
-            Publisher gearbox = new("Gearbox", 5);
-            Publishers.Add(gearbox);
+            VideoGames.Add(SpaceEngineers);
 
             VideoGame riskOfRain = new(
                 title: "Risk of Rain",
@@ -135,11 +146,9 @@ namespace VideoGameRepository.Classes
                 publisher: gearbox,
                 ageRating: 13
                 );
-            VideoGames.Add(riskOfRain);
-
             hopooGames.AddGame(riskOfRain);
-            gearbox.AddStudio(hopooGames);
             pc.AddGame(riskOfRain);
+            VideoGames.Add(riskOfRain);
 
             VideoGame riskOfRain2 = new(
                 title: "Risk of Rain 2",
@@ -152,17 +161,10 @@ namespace VideoGameRepository.Classes
                 publisher: gearbox,
                 ageRating: 13
                 );
-            VideoGames.Add(riskOfRain2);
-
             hopooGames.AddGame(riskOfRain2);
             pc.AddGame(riskOfRain2);
-
-            Studio ninjaKiwi = new("Ninja Kiwi", 3_000_000);
-            Studios.Add(ninjaKiwi);
-
-            Publisher ninjaKiwiPublishing = new("Ninja Kiwi Publishing", 1_000_000);
-            Publishers.Add(ninjaKiwiPublishing);
-
+            VideoGames.Add(riskOfRain2);
+       
             VideoGame bloonsTD6 = new(
                 title: "Bloons TD 6",
                 category: "Tower Defense",
@@ -174,15 +176,9 @@ namespace VideoGameRepository.Classes
                 publisher: ninjaKiwiPublishing,
                 ageRating: 9
                 );
-            VideoGames.Add(bloonsTD6);
-
             ninjaKiwi.AddGame(bloonsTD6);
-            ninjaKiwiPublishing.AddStudio(ninjaKiwi);
             pc.AddGame(bloonsTD6);
-
-            maddyMakesGamesStudio.AddGame(celeste);
-            maddyMakesGamesPublishing.AddStudio(maddyMakesGamesStudio);
-
+            VideoGames.Add(bloonsTD6);
 
             VideoGame xenoblade = new(
                 title: "Xenoblade Chronicles: Definitive Edition",
@@ -195,6 +191,7 @@ namespace VideoGameRepository.Classes
                 publisher: nintendo,
                 ageRating: 12
             );
+            VideoGames.Add(xenoblade);
 
             VideoGame xenoblade2 = new(
                 title: "Xenoblade Chronicles 2",
@@ -207,6 +204,7 @@ namespace VideoGameRepository.Classes
                 publisher: nintendo,
                 ageRating: 12
             );
+            VideoGames.Add(xenoblade2);
 
             VideoGame xenoblade3 = new(
                 title: "Xenoblade Chronicles 3",
@@ -219,6 +217,7 @@ namespace VideoGameRepository.Classes
                 publisher: nintendo,
                 ageRating: 12
             );
+            VideoGames.Add(xenoblade3);
 
             VideoGame xenobladeX = new(
                 title: "Xenoblade Chronicles X",
@@ -231,6 +230,8 @@ namespace VideoGameRepository.Classes
                 publisher: nintendo,
                 ageRating: 12
             );
+            monolithSoft.AddGame(xenobladeX);
+            VideoGames.Add(xenobladeX);
 
             VideoGame forgottenLand = new(
                 title: "Kirby and the Forgotten Land",
@@ -243,19 +244,14 @@ namespace VideoGameRepository.Classes
                 publisher: nintendo,
                 ageRating: 7
             );
-
-            VideoGames.Add(xenoblade);
-            VideoGames.Add(xenoblade2);
-            VideoGames.Add(xenoblade3);
-            VideoGames.Add(xenobladeX);
+            halLabs.AddGame(forgottenLand);
             VideoGames.Add(forgottenLand);
+
 
             monolithSoft.AddGame(xenoblade);
             monolithSoft.AddGame(xenoblade2);
             monolithSoft.AddGame(xenoblade3);
-            monolithSoft.AddGame(xenobladeX);
 
-            halLabs.AddGame(forgottenLand);
 
             nSwitch.AddGame(xenoblade);
             nSwitch.AddGame(xenoblade2);
@@ -265,7 +261,6 @@ namespace VideoGameRepository.Classes
             wiiU.AddGame(xenobladeX);
 
             pc.AddGame(satisfactory);
-            pc.AddGame(celeste);
         }
     }
 }
