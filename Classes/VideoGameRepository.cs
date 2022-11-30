@@ -38,6 +38,8 @@ namespace VideoGameRepository.Classes
             Publishers.Add(coffeeStainPublishing);
             Publishers.Add(maddyMakesGamesPublishing);
 
+            Studio gameFreak = new("Game Freak", 100_000_000);
+            Studios.Add(gameFreak);
             Publisher nintendo = new("Nintendo", 100_000_000);
             Publishers.Add(nintendo);
 
@@ -244,6 +246,30 @@ namespace VideoGameRepository.Classes
                 ageRating: 7
             );
 
+            VideoGame pokemonSword = new(
+                title: "Pokémon Sword",
+                category: "Role-Play",
+                year: 2019,
+                playerCount: 1,
+                price: 79.99f,
+                studio: gameFreak,
+                consoles: new() { nSwitch },
+                publisher: nintendo,
+                ageRating: 4
+            );
+
+            VideoGame pokemonShield = new(
+                title: "Pokémon Shield",
+                category: "Role-Play",
+                year: 2019,
+                playerCount: 1,
+                price: 79.99f,
+                studio: gameFreak,
+                consoles: new() { nSwitch },
+                publisher: nintendo,
+                ageRating: 4
+            );
+
             VideoGames.Add(xenoblade);
             VideoGames.Add(xenoblade2);
             VideoGames.Add(xenoblade3);
@@ -266,6 +292,15 @@ namespace VideoGameRepository.Classes
 
             pc.AddGame(satisfactory);
             pc.AddGame(celeste);
+
+            VideoGames.Add(pokemonSword);
+            VideoGames.Add(pokemonShield);
+
+            gameFreak.AddGame(pokemonSword);
+            gameFreak.AddGame(pokemonShield);
+
+            nSwitch.AddGame(pokemonSword);
+            nSwitch.AddGame(pokemonShield);
         }
     }
 }
