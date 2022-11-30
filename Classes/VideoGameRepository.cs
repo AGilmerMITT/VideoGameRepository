@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VideoGameRepository.Classes
+namespace VideoGame_Repository.Classes
 {
-    internal class VideoGameRepository
+    public class VideoGameRepository
     {
         public HashSet<VideoGame> VideoGames { get; set; } = new();
         public HashSet<VideoGameConsole> Consoles { get; set; } = new();

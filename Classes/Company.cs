@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VideoGameRepository.Classes
+namespace VideoGame_Repository.Classes
 {
-    abstract internal class Company
+    abstract public class Company
     {
         public string Name { get; }
         public double Income { get; private set; }
@@ -18,7 +18,7 @@ namespace VideoGameRepository.Classes
         }
     }
 
-    internal class Studio : Company
+    public class Studio : Company
     {
         private HashSet<VideoGame> _videoGames { get; set; } = new();
         public HashSet<VideoGame> VideoGames { get { return _videoGames.ToHashSet(); } }
@@ -31,7 +31,7 @@ namespace VideoGameRepository.Classes
         }
     }
 
-    internal class Publisher : Company
+    public class Publisher : Company
     {
         private HashSet<Studio> _studios { get; set; } = new();
         public HashSet<Studio> Studios { get { return _studios.ToHashSet(); } }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VideoGameRepository.Classes
+namespace VideoGame_Repository.Classes
 {
-    internal class VideoGame
+    public class VideoGame
     {
         private static int _nextId { get; set; } = 1;
         public int Id { get; } = _nextId++;
