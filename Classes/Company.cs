@@ -8,6 +8,8 @@ namespace VideoGame_Repository.Classes
 {
     abstract public class Company
     {
+        private static int _nextId { get; set; } = 1;
+        public int Id { get; } = _nextId++;
         public string Name { get; }
         public double Income { get; private set; }
 
@@ -15,6 +17,10 @@ namespace VideoGame_Repository.Classes
         {
             Name = name;
             Income = income;
+        }
+        public override string ToString()
+        {
+            return Name;
         }
     }
 
