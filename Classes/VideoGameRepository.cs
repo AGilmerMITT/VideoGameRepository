@@ -66,15 +66,7 @@ namespace VideoGameRepository.Classes
             VideoGameConsole nSwitch = new("Switch", 400, 8, true);
             Consoles.Add(nSwitch);
 
-            /*
-             * Video Games Creation
-             *  order:
-             *      Create new video game
-             *      Add game to studio
-             *      Add game to console
-             *      Add game to VideoGames
-             */
-
+            // VideoGames Creation & adding 
             VideoGame satisfactory = new(
                 title: "Satisfactory",
                 category: "Simulation",
@@ -86,9 +78,7 @@ namespace VideoGameRepository.Classes
                 publisher: coffeeStainPublishing,
                 ageRating: 10
                 );
-            coffeeStainStudio.AddGame(satisfactory);
-            // gmae console here
-            VideoGames.Add(satisfactory);
+            AddGameToStuff(satisfactory);
 
             VideoGame celeste = new(
                 title: "Celeste",
@@ -101,9 +91,7 @@ namespace VideoGameRepository.Classes
                 publisher: maddyMakesGamesPublishing,
                 ageRating: 10
                 );
-            maddyMakesGamesStudio.AddGame(celeste);
-            // gmae console here
-            VideoGames.Add(celeste);
+            AddGameToStuff(celeste);
 
             VideoGame ARKSurvivalEvolved = new(
                 title: "ARK: Survival Evolved",
@@ -116,9 +104,7 @@ namespace VideoGameRepository.Classes
                 publisher: WildcardPublishing,
                 ageRating: 13
                 );
-            WildcardStudio.AddGame(ARKSurvivalEvolved);
-            pc.AddGame(ARKSurvivalEvolved);
-            VideoGames.Add(ARKSurvivalEvolved);
+            AddGameToStuff(ARKSurvivalEvolved);
 
             VideoGame SpaceEngineers = new(
                 title: "Space Engineers",
@@ -131,9 +117,7 @@ namespace VideoGameRepository.Classes
                 publisher: WildcardPublishing,
                 ageRating: 13
                 );
-            coffeeStainStudio.AddGame(SpaceEngineers);
-            pc.AddGame(SpaceEngineers);
-            VideoGames.Add(SpaceEngineers);
+            AddGameToStuff(SpaceEngineers);
 
             VideoGame riskOfRain = new(
                 title: "Risk of Rain",
@@ -146,9 +130,7 @@ namespace VideoGameRepository.Classes
                 publisher: gearbox,
                 ageRating: 13
                 );
-            hopooGames.AddGame(riskOfRain);
-            pc.AddGame(riskOfRain);
-            VideoGames.Add(riskOfRain);
+            AddGameToStuff(riskOfRain);
 
             VideoGame riskOfRain2 = new(
                 title: "Risk of Rain 2",
@@ -161,10 +143,8 @@ namespace VideoGameRepository.Classes
                 publisher: gearbox,
                 ageRating: 13
                 );
-            hopooGames.AddGame(riskOfRain2);
-            pc.AddGame(riskOfRain2);
-            VideoGames.Add(riskOfRain2);
-       
+            AddGameToStuff(riskOfRain2);
+
             VideoGame bloonsTD6 = new(
                 title: "Bloons TD 6",
                 category: "Tower Defense",
@@ -176,9 +156,7 @@ namespace VideoGameRepository.Classes
                 publisher: ninjaKiwiPublishing,
                 ageRating: 9
                 );
-            ninjaKiwi.AddGame(bloonsTD6);
-            pc.AddGame(bloonsTD6);
-            VideoGames.Add(bloonsTD6);
+            AddGameToStuff(bloonsTD6);
 
             VideoGame xenoblade = new(
                 title: "Xenoblade Chronicles: Definitive Edition",
@@ -191,7 +169,7 @@ namespace VideoGameRepository.Classes
                 publisher: nintendo,
                 ageRating: 12
             );
-            VideoGames.Add(xenoblade);
+            AddGameToStuff(xenoblade);
 
             VideoGame xenoblade2 = new(
                 title: "Xenoblade Chronicles 2",
@@ -204,7 +182,7 @@ namespace VideoGameRepository.Classes
                 publisher: nintendo,
                 ageRating: 12
             );
-            VideoGames.Add(xenoblade2);
+            AddGameToStuff(xenoblade2);
 
             VideoGame xenoblade3 = new(
                 title: "Xenoblade Chronicles 3",
@@ -217,7 +195,7 @@ namespace VideoGameRepository.Classes
                 publisher: nintendo,
                 ageRating: 12
             );
-            VideoGames.Add(xenoblade3);
+            AddGameToStuff(xenoblade3);
 
             VideoGame xenobladeX = new(
                 title: "Xenoblade Chronicles X",
@@ -230,8 +208,7 @@ namespace VideoGameRepository.Classes
                 publisher: nintendo,
                 ageRating: 12
             );
-            monolithSoft.AddGame(xenobladeX);
-            VideoGames.Add(xenobladeX);
+            AddGameToStuff(xenobladeX);
 
             VideoGame forgottenLand = new(
                 title: "Kirby and the Forgotten Land",
@@ -244,23 +221,21 @@ namespace VideoGameRepository.Classes
                 publisher: nintendo,
                 ageRating: 7
             );
-            halLabs.AddGame(forgottenLand);
-            VideoGames.Add(forgottenLand);
+            AddGameToStuff(forgottenLand);
+        }
 
+        private void AddGameToStuff(VideoGame game)
+        {
+            // adding to studio
+            game.Studio.AddGame(game);
+            
+            // adding to conosoles
+            foreach(VideoGameConsole console in game.Consoles)
+            {
+                game.AddConsole(console);
+            }
 
-            monolithSoft.AddGame(xenoblade);
-            monolithSoft.AddGame(xenoblade2);
-            monolithSoft.AddGame(xenoblade3);
-
-
-            nSwitch.AddGame(xenoblade);
-            nSwitch.AddGame(xenoblade2);
-            nSwitch.AddGame(xenoblade3);
-            nSwitch.AddGame(forgottenLand);
-
-            wiiU.AddGame(xenobladeX);
-
-            pc.AddGame(satisfactory);
+            VideoGames.Add(game);
         }
     }
 }
