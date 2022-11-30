@@ -35,6 +35,11 @@ namespace VideoGameRepository.Classes
             Publisher nintendo = new("Nintendo", 100_000_000);
             Publishers.Add(nintendo);
 
+             Publisher FiveOFive = new("505 Games", 5_000_000);
+            Publisher.Add(FiveOFive);
+            Studio Kunos = new("Kunos Simulazioni", 25_000_000);
+            Studios.Add(Kunos);
+            
             VideoGameConsole pc = new("PC", 1500, 20, true);
             VideoGameConsole wiiU = new("Wii U", 400, 8, true);
             VideoGameConsole nSwitch = new("Switch", 400, 8, true);
@@ -67,9 +72,32 @@ namespace VideoGameRepository.Classes
                 publisher: maddyMakesGamesPublishing,
                 ageRating: 10
                 );
-
+             VideoGames ACC = new(
+                title: "Assetto Corsa Competionze",
+                category: "Sim Racing",
+                year: 2019,
+                playerCount: 40,
+                price: 50f,
+                studio: Kunos,
+                consoles: new() { pc },
+                publisher: FiveOFive,
+                ageRating: 18
+            );
+            VideoGames ACUlt = new(
+                title: "Assetto Corsa Ultimate Edition",
+                category: "Sim Racing",
+                year: 2014,
+                playerCount: 100,
+                price: 90f,
+                studio: Kunos,
+                consoles: new() { pc },
+                publisher: FiveOFive,
+                ageRating: 18
+            );
             VideoGames.Add(satisfactory);
             VideoGames.Add(celeste);
+            VideoGames.Add(ACC);
+            VideoGames.Add(AcUlt);
 
             coffeeStainStudio.AddGame(satisfactory);
             coffeeStainPublishing.AddStudio(coffeeStainStudio);
