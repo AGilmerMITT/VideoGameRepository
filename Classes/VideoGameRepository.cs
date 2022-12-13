@@ -360,6 +360,99 @@ namespace VideoGame_Repository.Classes
             VideoGames.Add(EldenRing);
             FromSoftware.AddGame(EldenRing);
             pc.AddGame(EldenRing);
+
+            var studioKlei = new Studio("Klei", 200_000);
+            var publisherKlei = new Publisher("Klei", 200_000);
+            publisherKlei.AddStudio(studioKlei);
+            var griftlands = new VideoGame(
+                title: "Griftlands",
+                category: "Roguelike",
+                year: 2021,
+                playerCount: 1,
+                price: 22.79f,
+                studio: studioKlei,
+                consoles: new() { pc },
+                publisher: publisherKlei,
+                ageRating: 12
+                );
+            VideoGames.Add(griftlands);
+            pc.AddGame(griftlands);
+            studioKlei.AddGame(griftlands);
+
+            var missingOxy = new VideoGame(
+                title: "Oxygen Not Included",
+                category: "Simulation",
+                year: 2019,
+                playerCount: 1,
+                price: 27.99f,
+                studio: studioKlei,
+                consoles: new() { pc },
+                publisher: publisherKlei,
+                ageRating: 12
+                );
+            VideoGames.Add(missingOxy);
+            pc.AddGame(missingOxy);
+            studioKlei.AddGame(missingOxy);
+
+            var markOfNinja = new VideoGame(
+                title: "Mark of the Ninja",
+                category: "Platformer",
+                year: 2012,
+                playerCount: 1,
+                price: 22.79f,
+                studio: studioKlei,
+                consoles: new() { pc },
+                publisher: publisherKlei,
+                ageRating: 17
+                );
+            VideoGames.Add(markOfNinja);
+            pc.AddGame(markOfNinja);
+            studioKlei.AddGame(markOfNinja);
+
+            VideoGameConsole ps5 = new(
+                name: "Playstation 5",
+                price: 917.55,
+                maxPlayers: 4,
+                connected: true
+                );
+            ps5.AddGame(EldenRing);
+            EldenRing.AddConsole(ps5);
+
+            ps5.AddGame(fortnite);
+            fortnite.AddConsole(ps5);
+
+            VideoGameConsole xbox = new(
+                "Xbox Series X", 499.99, 4, true);
+
+            xbox.AddGame(EldenRing);
+            EldenRing.AddConsole(xbox);
+            xbox.AddGame(fortnite);
+            fortnite.AddConsole(xbox);
+
+            var studioMegaCrit = new Studio(
+                "Mega Crit Games", 100_000);
+            var publisherMegaCrit = new Publisher(
+                "Mega Crit Games", 100_000);
+            publisherMegaCrit.AddStudio(studioMegaCrit);
+
+            VideoGame sts = new(
+                title: "Slay the Spire",
+                category: "Roguelike",
+                year: 2019,
+                playerCount: 1,
+                price: 28.99f,
+                studio: studioMegaCrit,
+                consoles: new() { pc, xbox, ps5, nSwitch },
+                publisher: publisherMegaCrit,
+                ageRating: 12
+                );
+            VideoGames.Add(sts);
+            pc.AddGame(sts);
+            xbox.AddGame(sts);
+            ps5.AddGame(sts);
+            nSwitch.AddGame(sts);
+
+
         }
     }
 }
