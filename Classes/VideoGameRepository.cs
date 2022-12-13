@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -452,7 +453,37 @@ namespace VideoGame_Repository.Classes
             ps5.AddGame(sts);
             nSwitch.AddGame(sts);
 
+            Studio bioware = new("Bioware", 500_000);
+            Publisher ea = new("Electronic Arts", 13_800_000_000);
+            ea.AddStudio(bioware);
 
+            VideoGame shatteredSteel = new(
+                title: "Shattered Steel",
+                category: "Simulation",
+                year: 1996,
+                playerCount: 16,
+                price: 14.99f,
+                studio: bioware,
+                consoles: new() { pc },
+                publisher: ea,
+                ageRating: 17
+                );
+            VideoGames.Add(shatteredSteel);
+            pc.AddGame(shatteredSteel);
+
+            VideoGame bGate = new(
+                title: "Baldur's Gate",
+                category: "RPG",
+                year: 1998,
+                playerCount: 1,
+                price: 14.99f,
+                studio: bioware,
+                consoles: new() { pc },
+                publisher: ea,
+                ageRating: 17
+                );
+            VideoGames.Add(bGate);
+            pc.AddGame(bGate);
         }
     }
 }
